@@ -8,12 +8,15 @@ public class Gladiator {
     String nation;
     int age;
     int height;
+    int stat;
 
     public Gladiator(String gladName, String gladNation, int gladAge, int gladHeight) {
         name = gladName;
         nation = gladNation;
         age = gladAge;
         height = gladHeight;
-
     }
+
+
+
 }

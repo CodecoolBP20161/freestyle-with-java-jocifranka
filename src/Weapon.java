@@ -3,7 +3,10 @@
  */
 public class Weapon extends Tool{
 
-    public Weapon(int damage) {
+    int damage;
 
+    public Weapon(String name, int damage) {
+        super(name);
+        this.damage = damage;
     }
 }

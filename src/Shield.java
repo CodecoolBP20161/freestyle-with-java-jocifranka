@@ -3,7 +3,11 @@
  */
 public class Shield extends Tool{
 
-    public Shield(int protection) {
+    int protection;
+
+    public Shield(String name, int protection) {
+        super(name);
+        this.protection = protection;
 
     }
 }
