@@ -7,7 +7,7 @@ public class Arena {
     public static Animal[] createAnimals(){
         Animal lion = new Animal("Simba", 5, 5);
         Animal walrus = new Animal("Walrus", 5, 5);
-        Animal rabbit = new Animal("Blood Bunny", 5, 5);
+        Animal rabbit = new Animal("The rabbit from Monty Python", 999, 999);
         Animal ducky = new Animal("Dagobert", 5, 5);
         Animal[] Animals = {lion, walrus, rabbit, ducky};
         return Animals;
