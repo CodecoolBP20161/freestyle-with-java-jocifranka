@@ -4,7 +4,7 @@
 
 public class Arena {
 
-    private static Animal[] createAnimals(){
+    public static Animal[] createAnimals(){
         Animal lion = new Animal("Simba", 5, 5);
         Animal walrus = new Animal("Walrus", 5, 5);
         Animal rabbit = new Animal("Blood Bunny", 5, 5);
@@ -13,7 +13,7 @@ public class Arena {
         return Animals;
     }
 
-    private static Gladiator[] createGladiators(){
+    public static Gladiator[] createGladiators(){
         Gladiator Spartacus = new Gladiator("Spartacus", "Thracian", 30, 178);
         Gladiator Crixus = new Gladiator("Crixus", "Gallic", 34, 170);
         Gladiator Gannicus = new Gladiator("Gannicus", "Celt", 27, 175);
@@ -23,7 +23,7 @@ public class Arena {
         return Gladiators;
     }
 
-    private static Tool[] createTools(){
+    public static Tool[] createTools(){
         Shield shield1 = new Shield("Adamantium shield", 10);
         Shield shield2 = new Shield("Iron shield", 5);
         Shield shield3 = new Shield("Wooden shield", 1);
@@ -37,28 +37,44 @@ public class Arena {
         return Tools;
     }
 
-    public void addTool(Gladiator fighter, int tool1, int tool2) {
-        Tool[] ArenaTools = createTools();
+    public void addTool(Gladiator fighter, int tool1, int tool2, Tool[] ArenaTools) {
         Tool Tool1 = ArenaTools[tool1];
         Tool Tool2 = ArenaTools[tool2];
         Tool[] Tools = {Tool1, Tool2};
         fighter.tools = Tools;
-        System.out.println(fighter.tools[0].name);
-        System.out.println(fighter.tools[0]);
     }
 
-    public static void main(String[] args) {
-        Gladiator gladiator1 = new Gladiator("baba", "nigger", 50, 150);
-        System.out.println(gladiator1.name);
-        Animal lion = new Animal("lion", 5, 5);
-        System.out.println(lion.name);
+    public void createArena() {
         Animal[] myLittleZoo = createAnimals();
-        System.out.println(myLittleZoo[0].damage);
         Gladiator[] gladiators = createGladiators();
-        System.out.println(gladiators[0].name);
         Tool[] ArenaTools = createTools();
-        Arena arena = new Arena();
-        arena.addTool(gladiator1, 1, 2);
+
+        Main inputs = new Main();
+
+        Gladiator player1 = gladiators[inputs.getPlayerName()];
+        int firstTool = inputs.getFirstToolInput();
+        int secondTool = inputs.getSecondToolInput();
+
+        addTool(player1, firstTool, secondTool, ArenaTools);
+
+        System.out.println(player1.tools[0].name);
+        System.out.println(player1.tools[1].name);
+        System.out.println(player1.name);
+
+        int opponentType = inputs.getOpponentType(player1);
+
+        if (opponentType == 2) {
+            int x = inputs.printGladiatorMenu();
+            Gladiator player2 = gladiators[x];
+            System.out.println(player2.name);
+
+        } else {
+            int y = inputs.printAnimalMenu();
+            Animal player2 = myLittleZoo[y];
+            System.out.println(player2.name);
+
+        }
+
 
 
     }
