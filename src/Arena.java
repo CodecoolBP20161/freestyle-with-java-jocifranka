@@ -1,10 +1,7 @@
-/**
- * Created by jocc on 2016.11.03..
- */
 
 public class Arena {
 
-    public static Animal[] createAnimals(){
+    private static Animal[] createAnimals(){
         Animal lion = new Animal("Simba", 5, 5);
         Animal walrus = new Animal("Walrus", 5, 5);
         Animal rabbit = new Animal("The rabbit from Monty Python", 999, 999);
@@ -13,7 +10,7 @@ public class Arena {
         return Animals;
     }
 
-    public static Gladiator[] createGladiators(){
+    private static Gladiator[] createGladiators(){
         Gladiator Spartacus = new Gladiator("Spartacus", "Thracian", 30, 178);
         Gladiator Crixus = new Gladiator("Crixus", "Gallic", 34, 170);
         Gladiator Gannicus = new Gladiator("Gannicus", "Celt", 27, 175);
@@ -23,7 +20,7 @@ public class Arena {
         return Gladiators;
     }
 
-    public static Tool[] createTools(){
+    private static Tool[] createTools(){
         Shield shield1 = new Shield("Adamantium shield", 10);
         Shield shield2 = new Shield("Iron shield", 5);
         Shield shield3 = new Shield("Wooden shield", 1);
@@ -39,7 +36,9 @@ public class Arena {
 
     public void addTool(Gladiator fighter, int tool1, int tool2, Tool[] ArenaTools) {
         Tool Tool1 = ArenaTools[tool1];
+        System.out.println(Tool1.name);
         Tool Tool2 = ArenaTools[tool2];
+        System.out.println(Tool2.name);
         Tool[] Tools = {Tool1, Tool2};
         fighter.tools = Tools;
     }
@@ -49,11 +48,18 @@ public class Arena {
         Gladiator[] gladiators = createGladiators();
         Tool[] ArenaTools = createTools();
 
-        Main inputs = new Main();
+        View inputs = new View();
 
         Gladiator player1 = gladiators[inputs.getPlayerName()];
+
         int firstTool = inputs.getFirstToolInput();
+        System.out.println(firstTool);
+
         int secondTool = inputs.getSecondToolInput();
+        System.out.println(secondTool);
+        System.out.println(ArenaTools[secondTool]);
+
+
 
         addTool(player1, firstTool, secondTool, ArenaTools);
 
@@ -74,8 +80,5 @@ public class Arena {
             System.out.println(player2.name);
 
         }
-
-
-
     }
 }

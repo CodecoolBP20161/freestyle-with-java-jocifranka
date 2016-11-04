@@ -3,10 +3,10 @@
  */
 public class Animal {
 
-    String name;
-    int damage;
-    int protection;
-    int stat;
+    static String name;
+    static int damage;
+    static int protection;
+    static int stat = 0;
 
     public Animal(String name, int damage, int protection){
         this.name = name;
