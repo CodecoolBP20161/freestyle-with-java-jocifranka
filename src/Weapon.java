@@ -1,10 +1,10 @@
 
 public class Weapon extends Tool{
 
-    static int damage;
+    int damage;
 
     public Weapon(String name, int damage) {
         super(name);
-        Weapon.damage = damage;
+        this.damage = damage;
     }
 }
