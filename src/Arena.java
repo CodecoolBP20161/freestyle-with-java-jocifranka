@@ -3,10 +3,10 @@ import java.util.Random;
 public class Arena {
 
     private static Animal[] createAnimals(){
-        Animal lion = new Animal("Simba", 5, 5);
-        Animal walrus = new Animal("Walrus", 5, 5);
+        Animal lion = new Animal("Simba", 7, 7);
+        Animal walrus = new Animal("Walrus", 3, 5);
         Animal rabbit = new Animal("The rabbit from Monty Python", 999, 999);
-        Animal ducky = new Animal("Dagobert", 5, 5);
+        Animal ducky = new Animal("Dagobert", 1, 1);
         Animal[] Animals = {lion, walrus, rabbit, ducky};
         return Animals;
     }
@@ -22,13 +22,13 @@ public class Arena {
     }
 
     private static Tool[] createTools(){
-        Shield shield1 = new Shield("Adamantium shield", 10);
-        Shield shield2 = new Shield("Iron shield", 5);
-        Shield shield3 = new Shield("Wooden shield", 1);
+        Shield shield1 = new Shield("Adamantium shield", 20);
+        Shield shield2 = new Shield("Iron shield", 10);
+        Shield shield3 = new Shield("Wooden shield", 5);
         Weapon sword = new Weapon("Gladius", 5);
-        Weapon spear = new Weapon("Spear", 6);
-        Weapon mace = new Weapon("Mace", 7);
-        Weapon axe = new Weapon("Axe", 8);
+        Weapon spear = new Weapon("Spear", 7);
+        Weapon mace = new Weapon("Mace", 5);
+        Weapon axe = new Weapon("Axe", 6);
         Weapon banana = new Weapon("Banana", 10);
         Weapon dildo = new Weapon("Dildo", 1);
         Tool[] Tools = {shield1, shield2, shield3, sword, spear, mace, axe, banana, dildo};
@@ -55,11 +55,11 @@ public class Arena {
         if (player1.age <= 14 || player1.age >= 60) {
             player1.stat = 0;
         } else if(15 <= player1.age && player1.age <= 25 || 35 <= player1.age && player1.age >= 50) {
-            player1.stat += 3;
-        } else if(25 <= player1.age && player1.age<= 35) {
             player1.stat += 5;
+        } else if(25 <= player1.age && player1.age<= 35) {
+            player1.stat += 10;
         } else {
-            player1.stat += 1;
+            player1.stat += 2;
         }
     }
 
@@ -68,9 +68,9 @@ public class Arena {
         if (player1.height > 120 && player1.height <= 150) {
             player1.stat += 2;
         } else if (player1.height > 150 && player1.height <= 170) {
-            player1.stat += 3;
-        } else if (player1.height > 170) {
             player1.stat += 5;
+        } else if (player1.height > 170) {
+            player1.stat += 8;
         }
     }
 
@@ -120,9 +120,9 @@ public class Arena {
         } else if (player2.stat > player1.stat) {
             winner = player2.name;
         } else {
-            winner = " nobody. Both sides died :( ";
+            winner = " :( Nobody ";
         }
-        System.out.println(winner);
+        System.out.println(player1.name + " has " + player1.stat + " points. " + player2.name + " has " + player2.stat + " points.");
         return winner;
     }
 
@@ -137,9 +137,9 @@ public class Arena {
         } else if (animal.stat > player1.stat) {
             winner = animal.name;
         } else {
-            winner = "It's a tie. You both died :( ";
+            winner = ":( Nobody ";
         }
-        System.out.println(winner);
+        System.out.println(player1.name + " has " + player1.stat + " points. " + animal.name + " has " + animal.stat + " points.");
         return winner;
     }
 
@@ -152,10 +152,11 @@ public class Arena {
             int x = inputs.printGladiatorMenu();
             Gladiator player2 = gladiators[x];
             winner = fightMan(player1, player2, ArenaTools);
-
+            System.out.println(inputs.playerTwoPrint(player2));
         } else {
             int y = inputs.printAnimalMenu();
             Animal player2 = myLittleZoo[y];
+            System.out.println(inputs.animalPrint(player2));
             winner = fightAnimal(player1, player2);
         }
         return winner;
@@ -171,8 +172,8 @@ public class Arena {
         int secondTool = inputs.getSecondToolInput();
 
         addTool(player1, firstTool, secondTool, ArenaTools);
-
+        System.out.println(inputs.playerOnePrint(player1));
         String winner = winner(inputs, player1, gladiators, ArenaTools);
-        System.out.println("The winner is " + winner);
+        System.out.println(winner + " has savagely defeated their opponent. ");
     }
 }

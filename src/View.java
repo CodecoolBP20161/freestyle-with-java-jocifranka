@@ -50,9 +50,11 @@ public class View {
 
 
     public int getPlayerName() {
+        System.out.println("Welcome to the Arena, you can create a fight between gladiators or a gladiator against an animal fighter.\n" +
+                "They will receive survival statistic points calibrated by their Base and weapon points.");
         Scanner scanInput = new Scanner(System.in);
         while (true) {
-            System.out.println("Choose your character: (0:Spartacus  1:Crixus  2:Gannicus  3:Agron  4:MentorMiki");
+            System.out.println("Choose your character: (0:Spartacus  1:Crixus  2:Gannicus  3:Agron  4:MentorMiki)");
             try {
                 if (scanInput.hasNextInt()) {
                     int amount = scanInput.nextInt();
@@ -78,7 +80,7 @@ public class View {
         while (true) {
             System.out.println("Do you want " + fighter1.name + " to fight an animal or a gladiator? (1:Animal  2:Gladiator) ");
             try {
-                if (scanInput.hasNextInt() == true) {
+                if (scanInput.hasNextInt()) {
                     int amount = scanInput.nextInt();
                     if (amount > 0 && amount < 3) {
                         return amount;
@@ -96,12 +98,11 @@ public class View {
     }
 
     public int printAnimalMenu() {
-//        TO DO: write menu!!
         Scanner scanInput = new Scanner(System.in);
         while (true) {
             System.out.println("Select from the animals: (0:Simba  1:Walrus  2:The rabbit from Monty Python  3:Dagobert)");
             try {
-                if (scanInput.hasNextInt() == true) {
+                if (scanInput.hasNextInt()) {
                     int amount = scanInput.nextInt();
                     if (amount >= 0 && amount <= 3) {
                         return amount;
@@ -119,10 +120,9 @@ public class View {
     }
 
     public int printGladiatorMenu() {
-        //        TO DO: write menu!!
         Scanner scanInput = new Scanner(System.in);
         while (true) {
-            System.out.println("Select from the Gladiators : (0:Spartacus  1:Crixus  2:Gannicus  3:Agron  4:MentorMiki");
+            System.out.println("Select from the Gladiators : (0:Spartacus  1:Crixus  2:Gannicus  3:Agron  4:MentorMiki )");
             try {
                 if (scanInput.hasNextInt()) {
                     int amount = scanInput.nextInt();
@@ -143,9 +143,16 @@ public class View {
         }
     }
 
-    public int getOpponentName() {
-        System.out.println("Choose your opponent: ");
-        Scanner scanInput = new Scanner(System.in);
-        return scanInput.nextInt();
+    public String playerOnePrint(Gladiator player1) {
+        return "Your choice was " + player1.name + " the " + player1.nation + ". With the tools " + player1.tools[0].name + " and " + player1.tools[1].name + ".";
     }
+
+    public String playerTwoPrint(Gladiator player2) {
+        return "You selected " + player2.name + " the " + player2.nation + ". With His choice of weapons " + player2.tools[0].name + " and " + player2.tools[1].name + ". Let the fight begin. ";
+    }
+
+    public String animalPrint(Animal player2) {
+        return "Your choice was " + player2.name + ". Let the fight begin. ";
+    }
+
 }
